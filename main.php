@@ -3,61 +3,56 @@
 $db_host="localhost";
 $db_user="root";
 $db_pass="";
-$database = "dukseliste";
+$database = "duskeliste";
 $table_school = "school";
 $table_class = "class";
 $table_student = "student";
 
- /*
+ 
 $con=mysql_connect($db_host, $db_user, $db_pass);
 
 if (!$con)  {
 die ('Could not connect to MySQL database' . mysql_error());
 }
 
-$con_db=  mysql_select_db($database);
+$con_db =  mysql_select_db ($database, $con);
 
 if (!$con_db)   {
  die ("Could not connect to database $database " . mysql_error()); 
 }
 
 
-    // sending query
-    $result = mysql_query("SELECT * FROM {$table}");
-    if (!$result) {
-        die("Query to show fields from table failed");
-    }
 
-$fields_num = mysql_num_fields($result);
 
-    echo "<h1>Table: {$table}</h1>";
-    echo "<table border='1'><tr>";
-    // printing table headers
-    for($i=0; $i<$fields_num; $i++)
-    {
-        $field = mysql_fetch_field($result);
-        echo "<td>{$field->name}</td>";
-    }
-    echo "</tr>\n";
-    // printing table rows
-    while($row = mysql_fetch_row($result))
-    {
-        echo "<tr>";
+// Read Schools
+$sql = " SELECT * from schools";
 
-        // $row is array... foreach( .. ) puts every element
-        // of $row to $cell variable
-        foreach($row as $cell)
-            echo "<td>$cell</td>";
+$result = mysql_query($sql,$con);
+$num = mysql_numrows($result);
 
-        echo "</tr>\n";
-        }
-       mysql_free_result($result);
-    
-    */
+echo "<select>";
+for ($num; $num > 0; $num--)	{
+	$output = mysql_result($result,$num-1,"school");
+	echo '<option value="'; echo $output; echo '">'; echo $output; echo ' </option>';
+}
+echo "</select>";
 
 
 
+$schoolGet = $_GET['school'];
 
+if (trim($schoolGet)) {
+	$sql = " SELECT * from student where school='$schoolGet'";
 
+$result = mysql_query($sql,$con);
+$num = mysql_numrows($result);
+
+echo "<select>";
+for ($num; $num > 0; $num--)	{
+	$output = mysql_result($result,$num-1,"student");
+	echo '<option value="'; echo $output; echo '">'; echo $output; echo ' </option>';
+}
+echo "</select>";
+}
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 //Request query string, save in $page
-$page = $_SERVER["QUERY_STRING"];
+$page = $_GET["page"];
 	#If no query string, $page=main
 	if (!$page) $page = "main";
 
@@ -14,6 +14,4 @@ require("www/text/$page.html");
 require("main.php");
 //Require footer of webpage
 require("www/footer.php");
-//
-
 ?>

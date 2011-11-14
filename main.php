@@ -1,12 +1,12 @@
-<?php
+ <?php
 
-$db_host="localhost";
-$db_user="root";
-$db_pass="";
-$database = "duskeliste";
-$table_school = "school";
-$table_class = "class";
-$table_student = "student";
+$db_host       ="localhost";
+$db_user       ="root";
+$db_pass       = "";
+$database      = "duskeliste";
+$table_school  = "schools";
+$table_class   = "classes";
+$table_student = "students";
 
  
 $con=mysql_connect($db_host, $db_user, $db_pass);
@@ -18,7 +18,7 @@ die ('Could not connect to MySQL database' . mysql_error());
 $con_db =  mysql_select_db ($database, $con);
 
 if (!$con_db)   {
- die ("Could not connect to database $database " . mysql_error()); 
+ die ("Could  not connect to database $database " . mysql_error()); 
 }
 
 
@@ -28,7 +28,7 @@ if (!$con_db)   {
 $sql = " SELECT * from schools";
 
 $result = mysql_query($sql,$con);
-$num = mysql_numrows($result);
+$num    = mysql_numrows($result);
 
 echo "<select>";
 for ($num; $num > 0; $num--)	{
@@ -38,14 +38,13 @@ for ($num; $num > 0; $num--)	{
 echo "</select>";
 
 
-
 $schoolGet = $_GET['school'];
 
 if (trim($schoolGet)) {
 	$sql = " SELECT * from student where school='$schoolGet'";
 
 $result = mysql_query($sql,$con);
-$num = mysql_numrows($result);
+$num    = mysql_numrows($result);
 
 echo "<select>";
 for ($num; $num > 0; $num--)	{

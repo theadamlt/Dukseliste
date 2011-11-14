@@ -3,7 +3,7 @@
 $db_host       ="localhost";
 $db_user       ="root";
 $db_pass       = "";
-$database      = "duskeliste";
+$database      = "dukseliste";
 $table_school  = "schools";
 $table_class   = "classes";
 $table_student = "students";

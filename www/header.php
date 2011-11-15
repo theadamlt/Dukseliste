@@ -23,8 +23,8 @@
 
 <div id="navcont">
     <ul id="nav">
-        <li><a href="?main">Hjem</a></li>
-        <li><a href="?download">Download</a></li>
+        <li><a href="?page=main">Hjem</a></li>
+        <li><a href="?page=download">Download</a></li>
     </ul>
 </div>    
 

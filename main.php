@@ -1,14 +1,14 @@
  <?php
 
-$db_host       ="localhost";
-$db_user       ="root";
+$db_host       = "localhost";
+$db_user       = "root";
 $db_pass       = "";
 $database      = "dukseliste";
 $table_school  = "schools";
 $table_class   = "classes";
 $table_student = "students";
 
- 
+
 $con=mysql_connect($db_host, $db_user, $db_pass);
 
 if (!$con)  {
@@ -53,5 +53,4 @@ for ($num; $num > 0; $num--)	{
 }
 echo "</select>";
 }
-
 ?>

@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <title>Site Name</title>
 <link rel="stylesheet" type="text/css" href="www/style.css" />
+<script type="text/javascript" language="Javascript" src="./jquery-1.7.js"></script>
 </head>
 
 <body>

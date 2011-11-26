@@ -4,9 +4,9 @@ $db_host       = "localhost";
 $db_user       = "root";
 $db_pass       = "";
 $database      = "dukseliste";
-$table_school  = "schoolsID";
-$table_class   = "classesID";
-$table_student = "studentsID";
+$table_school  = "schools";
+$table_class   = "classes";
+$table_student = "students";
 
 //Connect to DB
 $con=mysql_connect($db_host, $db_user, $db_pass);
@@ -26,70 +26,84 @@ if (!$con_db)   {
 
 // Read Schools
 $sql = "SELECT * from schools";
-
+//Run mysql query
 $result = mysql_query($sql,$con);
-
+//Print schools output
 echo "<form action='index.php' method='get' name='f1'>";
-echo "<input type='hidden' name='page' value='".$_GET['page']."' />";
+echo "<input type='hidden' name='page' value='".$page."' />";
 echo "<select name='school'>";
+//Print output as HTML option
 while ($row = mysql_fetch_array($result)) {
 	echo '<option ';
   	echo 'value="'.$row['rowID'].'">';
 	echo $row['name'];
 	echo "</option>";
 	}
+//Close HTML from and create button and linebreaks
 echo "</select>";
 echo "<br />";
 echo "<br />";
 echo "<input type='submit' value='Næste' />";
 echo "</form>";
 echo "<br />";
-
-
-
-/*
-for ($num; $num > 0; $num--)	{
-	$output = mysql_result($result,$num-1,"school");
-
-	echo '<option value="';
-	echo $output;
-	echo '">';
-	echo $output;
-	echo ' </option>';
-}
-*/
-
-
 echo "<br />";
 echo "<br />";
 
-if (!$_GET['school'])	{
-		
-}  else {
+
+//Is $_GET school empty?
+if (!empty($_GET['school']))	{
 	$schoolGet = $_GET['school'];
+
+//Is ! $_GET class empty?
+if (empty($_GET['class'])) {
+	//_GET class
+	$classGet=$_GET['class'];
+	//SQL
+	$sql = "SELECT * from classes where rowID='$classGet'";
+	//Run query
+	$result = mysql_query($sql,$con);
+
+
+
+	 //Print class output
+echo "<form action='index.php' method='get' name='f2'>";
+echo "<input type='hidden' name='page' value='".$page."' />";
+echo "<select name='class'>";
+//Print output as HTML option
+while ($row = mysql_fetch_array($result)) {
+	echo '<option ';
+  	echo 'value="'.$row['rowID'].'">';
+	echo $row['name'];
+	echo "</option>";
 }
+//Close HTML from and create button and linebreaks
+echo "</select>";
+echo "<br />";
+echo "<br />";
+echo "<input type='submit' value='Næste' />";
+echo "</form>";
+echo "<br />";
+echo "<br />";
+echo "<br />";
+} else {}
+} else{}
+
+
 
 
 
 /*
 if (trim($schoolGet)) {
 	$sql = "SELECT * from students where school='$schoolGet'";
-
 	$result = mysql_query($sql,$con);
-	$num    = mysql_numrows($result);
-
-	echo "<select>";
-	for ($num; $num > 0; $num--)	{
+	$num = 0;
 	$output = mysql_result($result,$num-1,"student");
-	echo '<option value="';
-	echo $output;
-	echo '">'; 
-	echo $output;
-	echo ' </option>';
-	}
-echo "</select>";
 
-}
-*/
+	while ($row = mysql_fetch_array($result)) {
+	echo '<p> '.$row['rowID'].'">';
+	echo $row['name'];
+	echo "</p>";
+	}
+} */
 
 ?>

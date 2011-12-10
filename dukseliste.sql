@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 24. 11 2011 kl. 18:50:13
+-- Genereringstid: 10. 12 2011 kl. 22:46:45
 -- Serverversion: 5.5.8
 -- PHP-version: 5.3.5
 
@@ -26,18 +26,20 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
-  `rowID` int(11) NOT NULL DEFAULT '1',
-  `school` text NOT NULL,
+  `rowID` int(11) NOT NULL AUTO_INCREMENT,
+  `schoolID` text NOT NULL,
   `class` text NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Data dump for tabellen `classes`
 --
 
-INSERT INTO `classes` (`rowID`, `school`, `class`) VALUES
-(1, 'Hejskole', '9.b');
+INSERT INTO `classes` (`rowID`, `schoolID`, `class`) VALUES
+(1, '1', '9.b'),
+(2, '1', '2.a'),
+(3, '2', '9.a');
 
 -- --------------------------------------------------------
 
@@ -46,17 +48,18 @@ INSERT INTO `classes` (`rowID`, `school`, `class`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `schools` (
-  `rowID` int(11) NOT NULL DEFAULT '1',
+  `rowID` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Data dump for tabellen `schools`
 --
 
 INSERT INTO `schools` (`rowID`, `name`) VALUES
-(1, 'Hejskole');
+(1, 'Hejskole'),
+(2, 'Lolskole');
 
 -- --------------------------------------------------------
 
@@ -70,12 +73,13 @@ CREATE TABLE IF NOT EXISTS `students` (
   `classID` int(11) NOT NULL,
   `name` text NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Data dump for tabellen `students`
 --
 
 INSERT INTO `students` (`rowID`, `schoolID`, `classID`, `name`) VALUES
-(1, 0, 9, '0'),
-(2, 0, 9, '0');
+(1, 1, 1, 'Adam'),
+(2, 1, 1, 'Brian'),
+(3, 2, 1, 'Jørgen');

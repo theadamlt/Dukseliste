@@ -1,8 +1,10 @@
 <?php
 
+//DB credentials
 $db_host       = "localhost";
 $db_user       = "root";
 $db_pass       = "";
+//Table and database name
 $database      = "dukseliste";
 $table_school  = "schools";
 $table_class   = "classes";
@@ -13,19 +15,19 @@ $con=mysql_connect($db_host, $db_user, $db_pass);
 
 //Human readable error
 if (!$con)  {
-die ('Could not connect to MySQL database' . mysql_error());
+die ('Kunne ikke tilslutte til MySQL database ' . mysql_error(). " Kontakt venligst administratoren");
 }
 //Select DB
 $con_db =  mysql_select_db($database, $con);
 
 //Human readable error
 if (!$con_db)   {
- die ("Could  not connect to database $database " . mysql_error()); 
+ die ("Kunne ikke tilslutte til $database " . mysql_error(). " Kontakt venligst administratoren"); 
 }
 
 
 // Read Schools
-$sql = "SELECT * from schools";
+$sql = "SELECT * from $table_school";
 //Run mysql query
 $result = mysql_query($sql,$con);
 //Print schools output
@@ -40,70 +42,67 @@ while ($row = mysql_fetch_array($result)) {
 	echo "</option>";
 	}
 //Close HTML from and create button and linebreaks
-echo "</select>";
-echo "<br />";
-echo "<br />";
-echo "<input type='submit' value='Næste' />";
-echo "</form>";
-echo "<br />";
-echo "<br />";
-echo "<br />";
+echo "</select>
+<br />
+<br />
+<input type='submit' value='Næste' />
+</form>
+<br />
+<br />
+<br />";
 
 
 //Is $_GET school empty?
 if (!empty($_GET['school']))	{
 	$schoolGet = $_GET['school'];
 
-//Is ! $_GET class empty?
-if (empty($_GET['class'])) {
-	//_GET class
-	$classGet=$_GET['class'];
+//Read classes
+
 	//SQL
-	$sql = "SELECT * from classes where rowID='$classGet'";
+	$sql = "SELECT * FROM $table_class WHERE schoolID=$schoolGet";
 	//Run query
 	$result = mysql_query($sql,$con);
 
+	$queryString = $_SERVER['QUERY_STRING'];
 
 
-	 //Print class output
+
+//Print class output
 echo "<form action='index.php' method='get' name='f2'>";
-echo "<input type='hidden' name='page' value='".$page."' />";
+echo '<input type="hidden" name="page2" value="'.$queryString.'" />';
 echo "<select name='class'>";
 //Print output as HTML option
 while ($row = mysql_fetch_array($result)) {
 	echo '<option ';
   	echo 'value="'.$row['rowID'].'">';
-	echo $row['name'];
+	echo $row['class'].mysql_error();
 	echo "</option>";
 }
 //Close HTML from and create button and linebreaks
-echo "</select>";
-echo "<br />";
-echo "<br />";
-echo "<input type='submit' value='Næste' />";
-echo "</form>";
-echo "<br />";
-echo "<br />";
-echo "<br />";
-} else {}
-} else{}
+echo "</select>
+<br />
+<br />
+<input type='submit' value='Næste' />
+</form>
+<br />
+<br />
+<br />";
+}
+
+if (!empty($schoolGet)) $classGet = $_GET['class'];
 
 
+if (!empty($classGet))	{
+	$sql = "SELECT * FROM $table_student WHERE schoolID=$schoolGet and classID=$classGet";
 
-
-
-/*
-if (trim($schoolGet)) {
-	$sql = "SELECT * from students where school='$schoolGet'";
 	$result = mysql_query($sql,$con);
-	$num = 0;
-	$output = mysql_result($result,$num-1,"student");
-
 	while ($row = mysql_fetch_array($result)) {
-	echo '<p> '.$row['rowID'].'">';
-	echo $row['name'];
-	echo "</p>";
-	}
-} */
+	echo '<p>';
+  	echo $row['name'];
+	echo '</p>';
+}
 
-?>
+
+
+}
+?> 

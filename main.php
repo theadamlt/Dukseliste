@@ -63,13 +63,10 @@ if (!empty($_GET['school']))	{
 	//Run query
 	$result = mysql_query($sql,$con);
 
-	$queryString = $_SERVER['QUERY_STRING'];
-
-
-
 //Print class output
 echo "<form action='index.php' method='get' name='f2'>";
-echo '<input type="hidden" name="page2" value="'.$queryString.'" />';
+echo "<input type='hidden' name='page' value='".$page."' />";
+echo "<input type='hidden' name='school' value='".$schoolGet."' />";
 echo "<select name='class'>";
 //Print output as HTML option
 while ($row = mysql_fetch_array($result)) {
@@ -101,8 +98,5 @@ if (!empty($classGet))	{
   	echo $row['name'];
 	echo '</p>';
 }
-
-
-
 }
 ?> 

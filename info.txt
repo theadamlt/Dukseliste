@@ -1,0 +1,6 @@
+<?php
+
+$mysql_host     = "mysql13.000webhost.com";
+$mysql_database = "a9325113_duks";
+$mysql_user     = "a9325113_root";
+$mysql_password = "password1";

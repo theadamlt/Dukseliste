@@ -26,6 +26,7 @@
     <ul id="nav">
         <li><a href="?page=main">Hjem</a></li>
         <li><a href="?page=download">Download</a></li>
+        <li><a href="?page=insert">Ny klasse</a>
     </ul>
 </div>    
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 10. 12 2011 kl. 22:46:45
+-- Genereringstid: 12. 12 2011 kl. 10:13:10
 -- Serverversion: 5.5.8
 -- PHP-version: 5.3.5
 
@@ -82,4 +82,4 @@ CREATE TABLE IF NOT EXISTS `students` (
 INSERT INTO `students` (`rowID`, `schoolID`, `classID`, `name`) VALUES
 (1, 1, 1, 'Adam'),
 (2, 1, 1, 'Brian'),
-(3, 2, 1, 'Jørgen');
+(3, 2, 3, 'Jørgen');

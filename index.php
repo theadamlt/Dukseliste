@@ -11,6 +11,7 @@ require("www/header.php");
 require("www/text/$page.html");
 //Require main.php, if page is main
 if ($page == "main") require("main.php");
+if ($page == "insert") require("new.php");
 //Require footer of webpage
 require("www/footer.php");
 ?>

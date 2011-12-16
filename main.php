@@ -31,13 +31,12 @@ $sql = "SELECT * from $table_school";
 //Run mysql query
 $result = mysql_query($sql,$con);
 //Print schools output
-echo "<form action='index.php' method='get' name='f1'>";
-echo "<input type='hidden' name='page' value='".$page."' />";
-echo "<select name='school'>";
+echo "<form action='index.php' method='get' name='f1'>
+<input type='hidden' name='page' value='".$page."' />
+<select name='school'>";
 //Print output as HTML option
 while ($row = mysql_fetch_array($result)) {
-	echo '<option ';
-  	echo 'value="'.$row['rowID'].'">';
+	echo '<option value="'.$row['rowID'].'">';
 	echo $row['name'];
 	echo "</option>";
 	}
@@ -64,10 +63,10 @@ if (!empty($_GET['school']))	{
 	$result = mysql_query($sql,$con);
 
 //Print class output
-echo "<form action='index.php' method='get' name='f2'>";
-echo "<input type='hidden' name='page' value='".$page."' />";
-echo "<input type='hidden' name='school' value='".$schoolGet."' />";
-echo "<select name='class'>";
+echo "<form action='index.php' method='get' name='f2'>
+<input type='hidden' name='page' value='".$page."' />
+<input type='hidden' name='school' value='".$schoolGet."' />
+<select name='class'>";
 //Print output as HTML option
 while ($row = mysql_fetch_array($result)) {
 	echo '<option ';
@@ -94,9 +93,7 @@ if (!empty($classGet))	{
 
 	$result = mysql_query($sql,$con);
 	while ($row = mysql_fetch_array($result)) {
-	echo '<p>';
-  	echo $row['name'];
-	echo '</p>';
+	echo '<p>'.$row['name'].'<p>';
 }
 }
 ?> 

@@ -25,9 +25,12 @@ VALUES ($schoolCount, '$_POST[klasse]') WHERE name NOT IN (SELECT class FROM cla
 //Get rowID from classes
 $sql = "SELECT max(rowID) FROM `classes`";
 
-$classCount = mysql_query($sql,$con)
+$classCount = mysql_query($sql,$con);
 if (!mysql_query($sql,$con)) {
 die ("Error" . mysql_error());
  }
 
+
+//redirect to homepage
+header('Location: index.php?page=main&school='.$schoolCount.'&class='.$classCount.'');
 ?>

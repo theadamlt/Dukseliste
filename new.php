@@ -1,3 +1,4 @@
+
 <form action="step.php" method="post">
 Skole: <input type="text" name="skole" value="Skole" /><br />
 Klasse: <input type="text" name="klasse"  value="Klasse"/><br />

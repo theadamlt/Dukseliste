@@ -24,9 +24,9 @@
 
 <div id="navcont">
     <ul id="nav">
-        <li><a href="?page=main">Hjem</a></li>
-        <li><a href="?page=download">Download</a></li>
-        <li><a href="?page=insert">Ny klasse</a>
+        <li><a href="index.php?page=main">Hjem</a></li>
+        <li><a href="index.php?page=download">Download</a></li>
+        <li><a href="index.php?page=insert">Ny klasse</a>
     </ul>
 </div>    
 

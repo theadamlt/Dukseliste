@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vært: localhost
--- Genereringstid: 12. 12 2011 kl. 10:13:10
+-- Genereringstid: 17. 12 2011 kl. 16:27:08
 -- Serverversion: 5.5.8
 -- PHP-version: 5.3.5
 

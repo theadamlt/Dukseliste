@@ -38,6 +38,7 @@ echo "<form action='index.php' method='get' name='f1'>
 while ($row = mysql_fetch_array($result)) {
 	echo '<option value="'.$row['rowID'].'">';
 	echo $row['name'];
+	$schoolStr = $row['name'];
 	echo "</option>";
 	}
 //Close HTML from and create button and linebreaks
@@ -71,7 +72,8 @@ echo "<form action='index.php' method='get' name='f2'>
 while ($row = mysql_fetch_array($result)) {
 	echo '<option ';
   	echo 'value="'.$row['rowID'].'">';
-	echo $row['class'].mysql_error();
+	echo $row['class'];
+	$classStr = $row['class'];
 	echo "</option>";
 }
 //Close HTML from and create button and linebreaks
@@ -87,11 +89,11 @@ echo "</select>
 
 if (!empty($schoolGet)) $classGet = $_GET['class'];
 
-
 if (!empty($classGet))	{
 	$sql = "SELECT * FROM $table_student WHERE schoolID=$schoolGet and classID=$classGet";
 
 	$result = mysql_query($sql,$con);
+	echo "<h2>Elever i $classStr på $schoolStr</h2><br />";
 	while ($row = mysql_fetch_array($result)) {
 	echo '<p>'.$row['name'].'<p>';
 }

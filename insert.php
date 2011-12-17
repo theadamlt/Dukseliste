@@ -1,4 +1,21 @@
 <?php
+
+
+$db_host       = "localhost";
+$db_user       = "root";
+$db_pass       = "";
+//Table and database name
+$database      = "dukseliste";
+$table_school  = "schools";
+$table_class   = "classes";
+$table_student = "students";
+
+//Connect to DB
+$con=mysql_connect($db_host, $db_user, $db_pass);
+//Select DB
+$con_db =  mysql_select_db($database, $con);
+
+
 //Insert school
 $sql="INSERT INTO schools (name) VALUES ('$_POST[skole]') WHERE name NOT IN (SELECT name FROM schools)";
 

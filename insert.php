@@ -28,7 +28,7 @@ $sql = "SELECT max(rowID) FROM `schools`";
 $schoolCount = mysql_query($sql,$con);
 if (!mysql_query($sql,$con)) {
 die ("Error" . mysql_error());
- }
+	}
 
 
 //Insert class

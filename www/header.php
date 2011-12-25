@@ -25,7 +25,7 @@
     <ul id="nav">
         <li><a href="index.php?page=main">Hjem</a></li>
         <li><a href="index.php?page=download">Download</a></li>
-        <li><a href="index.php?page=insert">Ny klasse</a>
+        <li><a href="index.php?page=insert">Ny klasse</a></li>
     </ul>
 </div>    
 

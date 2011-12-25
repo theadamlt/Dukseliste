@@ -7,9 +7,7 @@ $elever = $_POST['elever'];
 
 
 
-if (!is_string($school))	{
-	$school = ucfirst($school);
-}
+if (is_string($school)) $school = ucfirst($school);
 
 echo '<form action="insert.php" method="post">
 Skole:  <input type="text" name="skole" value="'.$school.'" /><br /><br />
@@ -22,7 +20,6 @@ while ($count <= $elever)	{
 	++$count;
 	echo "<br />";
 }
-echo '<input type="submit" value="Færdig!" />
-</form>';
+echo '<input type="submit" value="Færdig!" /></form>';
 require("www/footer.php");
 ?>

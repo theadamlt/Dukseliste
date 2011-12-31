@@ -15,37 +15,38 @@ $con=mysql_connect($db_host, $db_user, $db_pass);
 //Select DB
 $con_db =  mysql_select_db($database, $con);
 
-
-//Insert school
-$sql="INSERT INTO schools (name) VALUES ('$_POST[skole]') WHERE name NOT IN (SELECT name FROM schools)";
-
-if (!mysql_query($sql,$con)) {
-  die('Error: ' . mysql_error());
- }
-
 //Get rowID from schools
-$sql = "SELECT max(rowID) FROM `schools`";
+$sql = "SELECT max(rowID) FROM schools";
 $schoolCount = mysql_query($sql,$con);
 if (!mysql_query($sql,$con)) {
-die ("Error" . mysql_error());
+	die ("Error" . mysql_error());
+	}
+//Insert school
+$sql="INSERT INTO schools (rowID,name) VALUES ('$_POST[skole], $schoolCount')";
+if (!mysql_query($sql,$con)) {
+  	die('Error: ' . mysql_error());
 	}
 
-
-//Insert class
-$sql="INSERT INTO classes IF NOT EXIST (schoolID, class)
-VALUES ($schoolCount, '$_POST[klasse]')";
-
-
-//Insert class
-$sql="INSERT INTO schools (schoolID, class)
-VALUES ($schoolCount, '$_POST[klasse]') WHERE name NOT IN (SELECT class FROM class)";
-//Get rowID from classes
-$sql = "SELECT max(rowID) FROM `classes`";
-
+//Get rowI from schools
+$sql = "SELECT max(rowID) from classes";
 $classCount = mysql_query($sql,$con);
 if (!mysql_query($sql,$con)) {
-die ("Error" . mysql_error());
- }
+	die ("Error" . mysql_error());
+ 	}
+
+//Insert class
+$sql = "INSERT INTO classes (rowID, schoolID, class) VALUES ($classCount, $schoolCount, '$_POST[klasse]')";
+if (!mysql_query($sql,$con))	{
+	die("Error: ".mysql_error());
+}
+
+$studCount = $_POST['count'];
+
+while ($studCount >= 1)	{
+	$sql = "INSERT INTO students (rowID, schoolID, classID, name) VALUES (rowID, $schoolCount, $classCount, '$_POST[elev".$studCount."]')";
+	--$studCount;
+	}
+
 
 
 //redirect to homepage

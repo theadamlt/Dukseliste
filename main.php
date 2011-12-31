@@ -47,6 +47,9 @@ echo "</select>
 <input type='submit' value='Næste' />
 </form><br /><br /><br />";
 
+
+
+
 //Is $_GET school empty?
 if (!empty($_GET['school']))	{
 	$schoolGet = $_GET['school'];
@@ -81,6 +84,19 @@ if (!empty($_GET['school']))	{
 	}
 
 if (!empty($schoolGet)) $classGet = $_GET['class'];
+
+if (!empty($schoolGet) && !empty($classGet))	{
+	//Schoolstring
+	$sql = "SELECT * from schools WHERE rowID=$schoolGet";
+	$result = mysql_query($sql,$con);
+	$row = mysql_fetch_array($result);
+	$schoolStr = $row['name'];
+	//classString
+	$sql = "SELECT * FROM classes where schoolID=$schoolGet AND rowID=$classGet";
+	$result = mysql_query($sql,$con);
+	$row = mysql_fetch_array($result);
+	$classStr = $row['class'];
+	}
 
 if (!empty($classGet))	{
 	$sql = "SELECT * FROM $table_student WHERE schoolID=$schoolGet and classID=$classGet";

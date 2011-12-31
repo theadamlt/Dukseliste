@@ -16,10 +16,11 @@ Klasse: <input type="text" name="klasse"  value="'.$class.'"/><br />
 $count = 1;
 //echo '<form action="insert.php" method="post">';
 while ($count <= $elever)	{
-	echo "Elev $count: <input type='text' name='elev' value='Elevnavn ".$count."' /><br />";
+	echo "Elev $count: <input type='text' name='elev".$count."' value='Elevnavn ".$count."' /><br />";
 	++$count;
 	echo "<br />";
 }
-echo '<input type="submit" value="Færdig!" /></form>';
+echo '<input type="hidden" name="count" value='.$count.' />
+<input type="submit" value="Færdig!" /></form>';
 require("www/footer.php");
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 //Request page, save in $page
 $page=$_GET["page"];
 	//If no, $page=main

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Vært: localhost
--- Genereringstid: 17. 12 2011 kl. 16:27:08
--- Serverversion: 5.5.8
--- PHP-version: 5.3.5
+-- Host: localhost
+-- Generation Time: Jan 12, 2012 at 07:35 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,21 +23,21 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `classes`
+-- Table structure for table `classes`
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
   `rowID` int(11) NOT NULL AUTO_INCREMENT,
   `schoolID` text NOT NULL,
-  `class` text NOT NULL,
+  `name` text NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Data dump for tabellen `classes`
+-- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`rowID`, `schoolID`, `class`) VALUES
+INSERT INTO `classes` (`rowID`, `schoolID`, `name`) VALUES
 (1, '1', '9.b'),
 (2, '1', '2.a'),
 (3, '2', '9.a');
@@ -44,7 +45,7 @@ INSERT INTO `classes` (`rowID`, `schoolID`, `class`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `schools`
+-- Table structure for table `schools`
 --
 
 CREATE TABLE IF NOT EXISTS `schools` (
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `schools` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Data dump for tabellen `schools`
+-- Dumping data for table `schools`
 --
 
 INSERT INTO `schools` (`rowID`, `name`) VALUES
@@ -64,7 +65,7 @@ INSERT INTO `schools` (`rowID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur-dump for tabellen `students`
+-- Table structure for table `students`
 --
 
 CREATE TABLE IF NOT EXISTS `students` (
@@ -76,10 +77,14 @@ CREATE TABLE IF NOT EXISTS `students` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Data dump for tabellen `students`
+-- Dumping data for table `students`
 --
 
 INSERT INTO `students` (`rowID`, `schoolID`, `classID`, `name`) VALUES
 (1, 1, 1, 'Adam'),
 (2, 1, 1, 'Brian'),
 (3, 2, 3, 'Jørgen');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

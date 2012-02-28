@@ -15,7 +15,8 @@ localhost_con($database);
 
 $school = $_POST["skole"];
 $sql = "SELECT * FROM schools WHERE name='$school'";
-if (!($rowSchool=mysql_query($sql,$con))) {
+if (!($rowSchool=mysql_query($sql,$con)))
+{
 	//Get rowID from schools
 	$sql = "SELECT max(rowID) FROM schools";
 	$schoolCount = mysql_query($sql,$con);

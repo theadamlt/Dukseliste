@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2012 at 07:35 PM
+-- Generation Time: Jan 19, 2012 at 08:32 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `schoolID` text NOT NULL,
   `name` text NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `classes`
@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `schoolID` int(11) NOT NULL,
   `classID` int(11) NOT NULL,
   `name` text NOT NULL,
+  `times` int(11) NOT NULL,
   PRIMARY KEY (`rowID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -80,10 +81,10 @@ CREATE TABLE IF NOT EXISTS `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`rowID`, `schoolID`, `classID`, `name`) VALUES
-(1, 1, 1, 'Adam'),
-(2, 1, 1, 'Brian'),
-(3, 2, 3, 'Jørgen');
+INSERT INTO `students` (`rowID`, `schoolID`, `classID`, `name`, `times`) VALUES
+(1, 1, 1, 'Adam', 1),
+(2, 1, 1, 'Brian', 1),
+(3, 2, 3, 'Jørgen', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

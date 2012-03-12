@@ -1,5 +1,6 @@
 <?php
 
+
 if(!isset($_GET['page']))
 {
 	header('Location: ?page=main');
